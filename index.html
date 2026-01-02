@@ -1,11 +1,251 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OP3 - 2026</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OP3 — Organisasi Siswa | 2026</title>
+
+  <!-- Tailwind CDN (Play) - cepat untuk prototype -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Optional: custom Tailwind config for fonts/colors -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0ea5a4', /* teal-500 */
+            accent: '#f97316'   /* orange-500 */
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+  <meta name="description" content="OP3 — Organisasi Siswa Intra Sekolah Tahun 2026" />
 </head>
-<body>
-    <h1>Website Khusus OP3</h1>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- NAV -->
+  <header class="bg-white shadow-sm sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="#" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-primary flex items-center justify-center text-white font-bold">OP3</div>
+            <div>
+              <div class="text-sm font-semibold">OP3</div>
+              <div class="text-xs text-gray-500">Tahun 2026</div>
+            </div>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex gap-6 items-center text-sm" aria-label="Main navigation" id="navLinks">
+          <a class="nav-link text-gray-600 hover:text-primary" href="#home">Beranda</a>
+          <a class="nav-link text-gray-600 hover:text-primary" href="#about">Tentang</a>
+          <a class="nav-link text-gray-600 hover:text-primary" href="#programs">Program</a>
+          <a class="nav-link text-gray-600 hover:text-primary" href="#team">Pengurus</a>
+          <a class="nav-link text-gray-600 hover:text-primary" href="#contact">Kontak</a>
+        </nav>
+
+        <div class="md:hidden">
+          <button id="btnMobile" class="p-2 rounded-md text-gray-700 hover:bg-gray-100" aria-label="Toggle menu">
+            <svg id="iconMenu" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4">
+      <div class="flex flex-col gap-3">
+        <a class="text-gray-700" href="#home">Beranda</a>
+        <a class="text-gray-700" href="#about">Tentang</a>
+        <a class="text-gray-700" href="#programs">Program</a>
+        <a class="text-gray-700" href="#team">Pengurus</a>
+        <a class="text-gray-700" href="#contact">Kontak</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="home" class="relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-4" id="heroTitle">
+              OP3 — Organisasi Siswa Intra Sekolah
+            </h1>
+            <p class="text-lg text-gray-600 mb-6" id="heroSubtitle">
+              Mewujudkan generasi pelajar kreatif, bertanggung jawab, dan berprestasi di tahun 2026.
+            </p>
+            <div class="flex gap-3">
+              <a href="#programs" class="inline-flex items-center px-5 py-3 rounded-md bg-primary text-white font-medium shadow hover:opacity-95">Lihat Program</a>
+              <a href="#contact" class="inline-flex items-center px-5 py-3 rounded-md border border-gray-200 text-gray-700 hover:bg-gray-100">Hubungi Kami</a>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl p-6">
+              <div class="h-56 md:h-72 w-full rounded-lg bg-white/60 flex items-center justify-center">
+                <div class="text-center">
+                  <div class="text-2xl font-semibold">OP3 2026</div>
+                  <div class="text-sm text-gray-600 mt-2">Bersama kita berkarya</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- decorative circles animated -->
+            <div class="absolute -left-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-accent/10 rounded-full blur-2xl"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl font-bold">Tentang OP3</h2>
+          <p class="text-gray-600 mt-2">Organisasi Pelajar Pusat Pengembangan Potensi (OP3) berdedikasi untuk mengembangkan keterampilan kepemimpinan, seni, dan akademik.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 bg-white rounded-lg shadow-sm reveal">
+            <h3 class="font-semibold text-lg mb-2">Visi</h3>
+            <p class="text-gray-600 text-sm">Menjadi wadah unggulan untuk peningkatan kualitas siswa melalui kegiatan kreatif dan produktif.</p>
+          </div>
+
+          <div class="p-6 bg-white rounded-lg shadow-sm reveal">
+            <h3 class="font-semibold text-lg mb-2">Misi</h3>
+            <ul class="text-gray-600 text-sm list-disc ml-5">
+              <li>Mendorong kepemimpinan dan rasa tanggung jawab</li>
+              <li>Menyelenggarakan program pembinaan bakat</li>
+              <li>Meningkatkan partisipasi siswa dalam kegiatan sekolah</li>
+            </ul>
+          </div>
+
+          <div class="p-6 bg-white rounded-lg shadow-sm reveal">
+            <h3 class="font-semibold text-lg mb-2">Nilai</h3>
+            <p class="text-gray-600 text-sm">Integritas, kolaborasi, kreatifitas, dan keberlanjutan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs" class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl font-bold">Program Unggulan 2026</h2>
+          <p class="text-gray-600 mt-2">Rangkaian program untuk mengembangkan soft-skill dan hard-skill siswa.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="p-6 bg-gray-50 rounded-lg shadow-sm reveal-card">
+            <h4 class="font-semibold mb-2">Pelatihan Kepemimpinan</h4>
+            <p class="text-sm text-gray-600 mb-3">Workshop, mentoring, dan simulasi kepemimpinan.</p>
+            <span class="text-xs text-primary font-medium">Terjadwal: Triwulan</span>
+          </article>
+
+          <article class="p-6 bg-gray-50 rounded-lg shadow-sm reveal-card">
+            <h4 class="font-semibold mb-2">Kegiatan Seni & Budaya</h4>
+            <p class="text-sm text-gray-600 mb-3">Festival seni, pameran, dan kolaborasi antar ekstrakurikuler.</p>
+            <span class="text-xs text-primary font-medium">Terjadwal: Bulanan</span>
+          </article>
+
+          <article class="p-6 bg-gray-50 rounded-lg shadow-sm reveal-card">
+            <h4 class="font-semibold mb-2">Program Literasi & Riset</h4>
+            <p class="text-sm text-gray-600 mb-3">Kompetisi karya ilmiah, klub literasi, dan bimbingan riset.</p>
+            <span class="text-xs text-primary font-medium">Terjadwal: Semester</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl font-bold">Pengurus Inti</h2>
+          <p class="text-gray-600 mt-2">Tim yang memimpin dan menjalankan kegiatan OP3.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- contoh card -->
+          <div class="text-center p-4 bg-white rounded-lg shadow-sm reveal">
+            <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xl font-bold">KA</div>
+            <div class="mt-4 font-semibold">Kepala</div>
+            <div class="text-sm text-gray-500">2026</div>
+          </div>
+
+          <div class="text-center p-4 bg-white rounded-lg shadow-sm reveal">
+            <div class="w-24 h-24 mx-auto rounded-full bg-indigo-300 flex items-center justify-center text-white text-xl font-bold">WL</div>
+            <div class="mt-4 font-semibold">Wakil</div>
+            <div class="text-sm text-gray-500">2026</div>
+          </div>
+
+          <div class="text-center p-4 bg-white rounded-lg shadow-sm reveal">
+            <div class="w-24 h-24 mx-auto rounded-full bg-green-300 flex items-center justify-center text-white text-xl font-bold">SV</div>
+            <div class="mt-4 font-semibold">Sekretaris</div>
+            <div class="text-sm text-gray-500">2026</div>
+          </div>
+
+          <div class="text-center p-4 bg-white rounded-lg shadow-sm reveal">
+            <div class="w-24 h-24 mx-auto rounded-full bg-yellow-300 flex items-center justify-center text-white text-xl font-bold">BK</div>
+            <div class="mt-4 font-semibold">Bendahara</div>
+            <div class="text-sm text-gray-500">2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-6">
+          <h2 class="text-2xl font-bold">Kontak & Bergabung</h2>
+          <p class="text-gray-600 mt-2">Tertarik bergabung? Hubungi kami atau isi formulir singkat.</p>
+        </div>
+
+        <form class="bg-gray-50 p-6 rounded-lg shadow-sm grid gap-4" id="contactForm">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input required class="p-3 rounded-md border border-gray-200" placeholder="Nama" name="name" />
+            <input required class="p-3 rounded-md border border-gray-200" placeholder="Kelas / Jabatan" name="class" />
+          </div>
+
+          <input required type="email" class="p-3 rounded-md border border-gray-200" placeholder="Email" name="email" />
+
+          <textarea required class="p-3 rounded-md border border-gray-200" rows="4" placeholder="Pesan / Minat bergabung" name="message"></textarea>
+
+          <div class="flex justify-end">
+            <button type="submit" class="px-4 py-2 bg-primary text-white rounded-md">Kirim</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center">
+      <div class="text-sm">&copy; OP3 2026 — Semua hak cipta dilindungi.</div>
+      <div class="text-sm mt-3 md:mt-0">Dibuat dengan Tailwind & anime.js</div>
+    </div>
+  </footer>
+
+  <!-- App script (animasi & interaksi) -->
+  <script src="./assets/js/app.js" defer></script>
 </body>
 </html>
