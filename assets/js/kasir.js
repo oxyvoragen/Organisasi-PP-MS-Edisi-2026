@@ -245,5 +245,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // if there is no transaction sample, add a tiny sample (optional)
   // remove or comment out in production if unwanted
-  ();
+  (function seedIfEmpty() {
+    const list = loadTransactions();
+    if (list.length === 0) {
+      const sample = {
+        id: uid(),
+        date: new Date().toISOString().slice(0,10),
+        buyer: 'Contoh',
+        service: 'Print Hitam Putih',
+        pages: 2,
+        unitPrice: 1000,
+        discount: 0,
+        total: 2*1000,
+        notes: 'Contoh transaksi'
+      };
+      saveTransactions([sample]);
+      renderTable();
+    }
+  })();
 });
