@@ -1,9 +1,42 @@
 // app.js
 // Animasi sederhana dengan anime.js dan interaksi mobile menu + form
-// Pastikan anime.js sudah dimuat (index.html memuat anime.js via CDN)
+// Ditambah: pengaturan tema (dark/light) dengan toggle dan penyimpanan preferensi
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Hero title animation
+  // --- Theme initialization & toggle ---
+  const themeKey = 'theme'; // 'dark' | 'light'
+  const root = document.documentElement;
+  const btnTheme = document.getElementById('btnTheme');
+  const iconTheme = document.getElementById('iconTheme');
+
+  // Initialize theme: if localStorage === 'light' -> light, else default dark
+  const saved = localStorage.getItem(themeKey);
+  if (saved === 'light') {
+    root.classList.remove('dark');
+  } else {
+    // default: dark (also if saved === 'dark' or no saved value)
+    root.classList.add('dark');
+  }
+
+  function updateThemeIcon() {
+    if (root.classList.contains('dark')) {
+      // show moon icon (to indicate dark)
+      iconTheme.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+    } else {
+      // show sun icon (to indicate light)
+      iconTheme.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12h-1M18.36 5.64l-.7.7M6.34 17.66l-.7.7M18.36 18.36l-.7-.7M6.34 6.34l-.7-.7"/>';
+    }
+  }
+
+  updateThemeIcon();
+
+  btnTheme && btnTheme.addEventListener('click', () => {
+    const isDark = root.classList.toggle('dark');
+    localStorage.setItem(themeKey, isDark ? 'dark' : 'light');
+    updateThemeIcon();
+  });
+
+  // --- Hero title animation ---
   if (typeof anime !== 'undefined') {
     anime.timeline({ easing: 'easeOutExpo', duration: 700 })
       .add({
