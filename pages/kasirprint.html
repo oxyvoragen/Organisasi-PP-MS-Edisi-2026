@@ -30,7 +30,7 @@
   <!-- anime.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
 
-  <meta name="description" content="Kasir Percetakan OP3 2026 — input transaksi dan recap pembelian" />
+  <meta name="description" content="Kasir Percetakan OP3 2026 — input transaksi" />
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
   <header class="bg-gray-800/60 backdrop-blur-sm sticky top-0 z-30">
@@ -45,92 +45,54 @@
         </a>
 
         <div class="flex items-center gap-3">
+          <a href="recap.html" class="text-sm px-3 py-2 rounded-md bg-primary text-black font-semibold">Lihat Rekap</a>
           <a href="../index.html" class="text-sm px-3 py-2 rounded-md hover:bg-gray-700/40">Kembali</a>
-          <a href="#" id="btnExport" class="text-sm px-3 py-2 rounded-md bg-primary text-black font-semibold">Ekspor CSV</a>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="grid lg:grid-cols-2 gap-8">
-      <!-- Kasir / Form -->
-      <section class="bg-gray-800 rounded-lg p-6 shadow-sm">
-        <h2 class="text-xl font-bold mb-4">Kasir — Tambah Transaksi</h2>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section class="bg-gray-800 rounded-lg p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Kasir — Tambah Transaksi</h2>
 
-        <form id="txForm" class="grid gap-3">
-          <div class="grid sm:grid-cols-2 gap-3">
-            <input id="buyer" name="buyer" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Nama Pembeli / Organisasi" />
-            <input id="date" name="date" type="date" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" />
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-3">
-            <select id="service" name="service" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100">
-              <option value="">Pilih Layanan</option>
-              <option value="Print Hitam Putih">Print Hitam Putih</option>
-              <option value="Print Warna">Print Warna</option>
-              <option value="Binding">Binding</option>
-              <option value="Laminasi">Laminasi</option>
-              <option value="Scan">Scan</option>
-            </select>
-
-            <input id="pages" name="pages" type="number" min="1" value="1" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Jumlah / Halaman" />
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-3">
-            <input id="unitPrice" name="unitPrice" type="number" min="0" value="1000" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Harga Satuan (Rp)" />
-            <input id="discount" name="discount" type="number" min="0" value="0" class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Diskon (Rp)" />
-          </div>
-
-          <textarea id="notes" name="notes" rows="2" class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Catatan (opsional)"></textarea>
-
-          <div class="flex items-center justify-between mt-2">
-            <div class="text-sm text-gray-300">Subtotal: <span id="subtotal" class="font-semibold">Rp 0</span></div>
-            <div class="flex gap-2">
-              <button type="reset" id="btnReset" class="px-4 py-2 rounded-md border border-gray-700 text-gray-200">Reset</button>
-              <button type="submit" class="px-4 py-2 rounded-md bg-accent text-black font-semibold">Tambah</button>
-            </div>
-          </div>
-        </form>
-      </section>
-
-      <!-- Recap / Table -->
-      <section class="bg-gray-800 rounded-lg p-6 shadow-sm">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-bold">Rekap Pembelian</h2>
-          <div class="text-sm text-gray-400">Total Transaksi: <span id="txCount">0</span></div>
+      <form id="txForm" class="grid gap-3">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <input id="buyer" name="buyer" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Nama Pembeli / Organisasi" />
+          <input id="date" name="date" type="date" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" />
         </div>
 
-        <div class="overflow-x-auto rounded-md border border-gray-700">
-          <table class="min-w-full divide-y divide-gray-700" id="txTable">
-            <thead class="bg-gray-900/60">
-              <tr class="text-left text-sm text-gray-300">
-                <th class="px-3 py-2">#</th>
-                <th class="px-3 py-2">Tanggal</th>
-                <th class="px-3 py-2">Pembeli</th>
-                <th class="px-3 py-2">Layanan</th>
-                <th class="px-3 py-2">Jumlah</th>
-                <th class="px-3 py-2">Harga Satuan</th>
-                <th class="px-3 py-2">Diskon</th>
-                <th class="px-3 py-2">Total</th>
-                <th class="px-3 py-2">Aksi</th>
-              </tr>
-            </thead>
-            <tbody id="txBody" class="divide-y divide-gray-700 text-sm text-gray-200">
-              <!-- rows injected here -->
-            </tbody>
-          </table>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <select id="service" name="service" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100">
+            <option value="">Pilih Layanan</option>
+            <option value="Print Hitam Putih">Print Hitam Putih</option>
+            <option value="Print Warna">Print Warna</option>
+            <option value="Binding">Binding</option>
+            <option value="Laminasi">Laminasi</option>
+            <option value="Scan">Scan</option>
+          </select>
+
+          <input id="pages" name="pages" type="number" min="1" value="1" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Jumlah / Halaman" />
         </div>
 
-        <div class="mt-4 flex items-center justify-between">
-          <div class="text-sm text-gray-300">Total Pendapatan: <span id="grandTotal" class="font-semibold">Rp 0</span></div>
-          <div class="flex items-center gap-3">
-            <input id="filterDate" type="date" class="p-2 rounded-md bg-gray-900 border border-gray-700 text-gray-100" />
-            <button id="btnClearAll" class="px-3 py-2 rounded-md border border-red-500 text-red-400">Hapus Semua</button>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <input id="unitPrice" name="unitPrice" type="number" min="0" value="1000" required class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Harga Satuan (Rp)" />
+          <input id="discount" name="discount" type="number" min="0" value="0" class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Diskon (Rp)" />
+        </div>
+
+        <textarea id="notes" name="notes" rows="2" class="p-3 rounded-md bg-gray-900 border border-gray-700 text-gray-100" placeholder="Catatan (opsional)"></textarea>
+
+        <div class="flex items-center justify-between mt-2">
+          <div class="text-sm text-gray-300">Subtotal: <span id="subtotal" class="font-semibold">Rp 0</span></div>
+          <div class="flex gap-2">
+            <button type="reset" id="btnReset" class="px-4 py-2 rounded-md border border-gray-700 text-gray-200">Reset</button>
+            <button type="submit" class="px-4 py-2 rounded-md bg-accent text-black font-semibold">Tambah</button>
           </div>
         </div>
-      </section>
-    </div>
+      </form>
+
+      <div id="toast" class="mt-4 hidden p-3 rounded-md bg-primary text-black font-medium"></div>
+    </section>
   </main>
 
   <footer class="bg-gray-900 text-gray-400">
