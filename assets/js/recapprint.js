@@ -56,7 +56,7 @@
         <td class="px-3 py-2 align-top">${formatIDR(tx.unitPrice)}</td>
         <td class="px-3 py-2 align-top">${formatIDR(tx.discount)}</td>
         <td class="px-3 py-2 align-top font-semibold">${formatIDR(tx.total)}</td>
-        <td class="px-3 py-2 align-top">${tx.notes}</td>
+        <td class="px-3 py-2 align-top">${escapeHtml(tx.notes)}</td>
         <td class="px-3 py-2 align-top">
           <button data-id="${tx.id}" class="btnDel px-2 py-1 rounded-md bg-red-600 text-black text-xs disable">Hapus</button>
         </td>
