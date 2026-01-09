@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OP3 — Kasir Percetakan Kantor OP3 | 2026</title>
+
+  <!-- Icon -->
+  <link rel="icon" type="image/png" href="../assets/img/logo-al-matlab.png">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0ea5a4',
+            accent: '#f97316'
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+
+  <meta name="description" content="Kasir Percetakan OP3 2026 — input transaksi" />
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+  <header class="bg-gray-800/60 backdrop-blur-sm sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-md bg-primary flex items-center justify-center text-white font-bold">OP3</div>
+          <div>
+            <div class="text-sm font-semibold">Kasir Percetakan Kantor OP3</div>
+            <div class="text-xs text-gray-400">OP3 — 2026</div>
+          </div>
+        </a>
+
+        <div class="flex items-center gap-3">
+          <a href="../index.html" class="text-sm px-3 py-2 rounded-md hover:bg-gray-700/40">Kembali</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section class="bg-gray-800 rounded-lg p-6 shadow-sm">
+      <h2 class="text-xl font-bold mb-4">Kasir — Tambah Transaksi</h2>
+
+      <!-- JotForm embed: buat form di JotForm lalu ganti YOUR_FORM_ID dengan ID form Anda -->
+      <div class="bg-gray-800 p-6 rounded-lg shadow-sm">
+        <div id="jotformEmbed" class="w-full">
+          <!-- Replace YOUR_FORM_ID with your JotForm ID, contohnya: 230123456789874 -->
+          <script defer src="https://form.jotform.com/jsform/260069117154453"></script>
+
+          <noscript>
+            <div class="text-sm text-gray-300">
+              Jika JavaScript tidak aktif, buka link ini untuk mengisi form: <a class="text-primary underline" href="https://form.jotform.com/260069117154453" target="_blank" rel="noopener">Kasir</a>
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center text-sm">
+      <div>&copy; OP3 2026 — Kasir Percetakan Kantor OP3</div>
+      <div>Dibuat dengan Tailwind & anime.js</div>
+    </div>
+  </footer>
+</body>
+</html>
